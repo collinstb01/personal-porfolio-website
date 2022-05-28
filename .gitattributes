@@ -1,0 +1,2 @@
+*.js*.jpg filter=lfs diff=lfs merge=lfs -text
+*.json*.map*.md filter=lfs diff=lfs merge=lfs -text

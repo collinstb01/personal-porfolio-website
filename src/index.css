@@ -1,0 +1,15 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  z-index: -88;
+}
+
+h1 {
+  font-size: 20px;
+}
