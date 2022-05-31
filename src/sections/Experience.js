@@ -1,16 +1,36 @@
-import react from "react";
+import react, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Title from "../component/Title";
 import ExperienceCard from "../component/ExperienceCard";
+import axios from "axios"
+import { useDispatch, useSelector } from "react-redux";
+import {FetchSkills, getSkill} from "../features/SkillSlice"
 
 const Experience = () => {
+  const [skillss, setSkills] = useState(null)
+  const message = ""
+
+  const dispatch = useDispatch()
+  const data = useSelector(getSkill)
+  const _data = data?.data
+
+  console.log(data?.data?.attributes)
+  useEffect(() => {
+    dispatch(FetchSkills(message))
+    console.log(message)
+  }, [dispatch])
+    
   
   return (
     <Main>
       <Title title1="My Experience" title2="My Experience" />
       <div className="bottom">
         <div className="bott">
-        <ExperienceCard skills="FrontEnd Skills" t1="REACTJS" t2="HTML" t3="CSS/Styled-components" t4="REDUX" t5="GRAPHQL" />
+     {
+       _data.map((dat) => (
+         <ExperienceCard dat={dat?.attributes?.frontendkill} />
+       ))
+     }
         <ExperienceCard skills="BackEnd Skills" t1="MERN STACK" t2="NODEJS" t3="EXPRESS JS" t4="MONGODB" t5="" />
         </div>
       </div>
