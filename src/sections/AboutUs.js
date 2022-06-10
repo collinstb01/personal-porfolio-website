@@ -81,7 +81,7 @@ const Main = styled.div`
     margin-top: 50px;
 
     @media (max-width: 700px) {
-      flex-direction: column;
+      flex-direction: column-reverse;
       justify-content: center;
       align-items: center;
     }
@@ -106,6 +106,8 @@ const Main = styled.div`
       border-bottom-right-radius: 20%;
       @media (max-width: 700px) {
         width: 240px;
+        display: none;
+        margin-block: 20px;
       }
     }
   }
@@ -117,18 +119,20 @@ const Main = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     @media (max-width: 700px) {
       width: 100%;
     }
     .top {
       display: flex;
       margin-bottom: 10px;
+      color: ${(props) => props.theme.bCColor};
     }
     .middle {
-      max-width: 80%;
+      max-width: 85%;
       margin-bottom: 8px;
-      font-family: cursive;
+      font-family: verdana;
+      letter-spacing: 1px;
+      line-height: 25px;
     }
   }
 `;

@@ -17,6 +17,8 @@ const Main = styled.div`
   position: relative;
   text-transform: uppercase;
   text-align: center;
+  display: flex;
+  flex-direction: column;
   .first {
     font-size: 25px;
     color: gainsboro;
@@ -32,7 +34,7 @@ const Main = styled.div`
     top: 5px;
     left: 33%;
     opacity: 0.2;
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       font-size: 25px;
       left: 15%;
       top: 12px;

@@ -22,15 +22,15 @@ const RectnWorkEach = ({ onework }) => {
             <BsGithub className="icon" />
           </div>
           <div>
-            <img src={onework.img} alt={`Project ${onework.id}`} />
+            <img src={`http://localhost:1337${onework?.attributes?.projectimage?.data?.attributes?.formats?.large?.url}`} alt={`Project ${onework.id}`} />
           </div>
           <div>
-            <h1>{onework.title}</h1>
+            <h1>{onework.attributes.ProjectName}</h1>
           </div>
           <div className="overlay2">
             <BsLinkedin className="icon" />
             <BsGithub className="icon" />
-          <Button small className="button">Live Demo</Button>
+          <Button small className="button"><a href={onework.attributes.UrlLink} target="_blank" >LIVE DEMO</a></Button>
           </div>
         </motion.div>
       </AnimatePresence>

@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../component/Title";
 import styled from "styled-components";
 import Data from "../component/RecentWorksData";
 import RectnWorkEach from "../component/RectnWorkEach";
 import { Button } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchProjects } from "../features/SkillSlice";
 
 const RecentWork = () => {
-  const [work, setWork] = useState(Data);
-  const menuItems = [...new Set(Data.map((Val) => Val.category))];
+  
+  const {project} = useSelector((state) => state.skill)
 
+  const _project = project?.data
+
+  const menuItems = [...new Set(_project?.map((Val) => Val?.data?.attributes?.category))];
+
+  const [work, setWork] = useState(_project);
+  console.log(work)
+  const dispatch = useDispatch()
+  console.log(project)
+  useEffect(() => {
+    dispatch(FetchProjects())
+  }, [])
+  
   const FilteredData = (val) => {
-    const newItem = Data.filter((dataa) => {
+    const newItem = _project.filter((dataa) => {
       return dataa.category == val;
     });
     setWork(newItem);
@@ -22,7 +36,7 @@ const RecentWork = () => {
       </div>
       <div className="bottom">
         <div className="buttons">
-          <Button onClick={() => setWork(Data)}>ALL</Button>
+          <Button onClick={() => setWork(_project)}>ALL</Button>
           {menuItems.map((val) => (
             <>
               <Button onClick={() => FilteredData(val)}>{val}</Button>
@@ -31,7 +45,7 @@ const RecentWork = () => {
         </div>
         <div className="projects">
           <div className="project">
-            {work.map((onework) => (
+            {_project?.map((onework) => (
               <RectnWorkEach onework={onework} />
             ))}
           </div>

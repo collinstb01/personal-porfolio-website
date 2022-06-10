@@ -25,7 +25,8 @@ export default Footer
 const Main = styled.div`
 width: 100%;
 height: auto;
-background-color: azure;
+background-color: ${props => props.theme.footerBackground};
+color: ${props => props.theme.bCColor};
 
 span {
     font-size: 20px;

@@ -22,7 +22,7 @@ const Main = styled.div`
     width: auto;
     height: auto;
     padding: 30px 10px;
-    background: white;
+    background: ${props => props.theme.bC};
     margin-left:  20px;
     box-shadow: 1px 1px 1px 1px #00000038;
     font-size: 7px;

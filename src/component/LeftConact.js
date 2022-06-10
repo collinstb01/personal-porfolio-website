@@ -27,6 +27,9 @@ const Main = styled.div`
   margin: 20px;
   width: 50%;
   font-weight: 100;
+    color: ${props => props.theme.bCColor};
+  background-color: ${props => props.theme.bC};
+
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 

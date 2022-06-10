@@ -92,6 +92,7 @@ const Main = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    color: ${props => props.theme.bCColor};
   }
   h1 {
       margin-block: 20px;
@@ -101,6 +102,8 @@ const Main = styled.div`
   .ss {
     width: 80%;
     margin-block-end: 20px;
+    background-color: ${props => props.theme.bC};
+    overflow: hidden;
   }
   .btn {
     color: white;

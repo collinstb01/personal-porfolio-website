@@ -7,8 +7,15 @@ export const FetchSkills =  createAsyncThunk(
     "skils/skill",
     async ({message}) => {
         const response = await axios.get("http://localhost:1337/api/skills")
-        message = "hello"
-        return {data: response.data, message: message}
+        return response.data
+    }
+)
+
+export const FetchProjects = createAsyncThunk(
+    "projects/project",
+    async () => {
+       const response = await axios.get("http://localhost:1337/api/projects?populate=*")
+       return response.data
     }
 )
 
@@ -16,6 +23,7 @@ const SkillSlice = createSlice({
     name: "skill",
     initialState: {
         skill: [],
+        project: [],
         message: ""
     },
     reducers: {
@@ -26,11 +34,20 @@ const SkillSlice = createSlice({
           return { message: "Pending"}
         },
         [FetchSkills.fulfilled]: (state, action) => {
-            return {...state, message: action.payload.message, skill: action.payload.data }
+            return {...state, message: "sucessful", skill: action.payload }
         },
         [FetchSkills.rejected]: (state) => {
             return {...state, message: "failed to retrieve the data"}
-        }
+        },
+        [FetchProjects.pending] : (state) => {
+            return {...state, message: "collecting data" }
+        },
+        [FetchProjects.fulfilled]: (state, action) => {
+            return {...state, message: "sucessful", project: action.payload }
+        },
+        [FetchProjects.rejected]: (state) => {
+            return {...state, message: "failed to retrieve the data"}
+        },
     }
 })
 

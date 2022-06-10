@@ -25,8 +25,9 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: white;
+  background-color: ${props => props.theme.bC};
   box-shadow: 1px 1px 1px grey;
+  color: ${props => props.theme.bCColor};
   .img {
     width: 30px;
     height: auto;
