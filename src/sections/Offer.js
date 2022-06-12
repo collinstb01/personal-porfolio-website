@@ -9,8 +9,8 @@ const Offer = () => {
       title: "Web Development",
       id: 1,
       description: {
-        title1: "Hello i am a Web Developer",
-        title2: "Web Developer",
+        title1: "",
+        title2: "Web Development",
       },
     },
     {

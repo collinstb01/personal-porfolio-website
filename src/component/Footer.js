@@ -28,6 +28,7 @@ height: auto;
 background-color: ${props => props.theme.footerBackground};
 color: ${props => props.theme.bCColor};
 
+
 span {
     font-size: 20px;
 }
