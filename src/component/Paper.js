@@ -28,6 +28,9 @@ const Main = styled.div`
   cursor: pointer;
   border-radius: 10px;
 
+  @media (max-width: 900px) {
+    width: 30%;
+    }
   @media (max-width: 430px) {
     width: 80%;
     height: 100px;

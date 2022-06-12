@@ -5,9 +5,7 @@
 }
 body {
   background-color: whitesmoke;
-  display: flex;
-  justify-content: center;
-  z-index: -88;
+    z-index: -88;
 }
 
 h1 {
