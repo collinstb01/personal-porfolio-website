@@ -1,11 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BsLinkedin } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { Button } from "@material-ui/core";
 
 const RectnWorkEach = ({ onework }) => {
+  const [text, setText] = useState(false);
+
+  const handle = () => {
+    setText((e) => !e);
+  };
   return (
     <Main>
       <AnimatePresence>
@@ -22,15 +27,42 @@ const RectnWorkEach = ({ onework }) => {
             <BsGithub className="icon" />
           </div>
           <div>
-            <img src={`http://localhost:1337${onework?.attributes?.projectimage?.data?.attributes?.formats?.large?.url}`} alt={`Project ${onework.id}`} />
+            <img
+              src={`http://localhost:1337${onework?.attributes?.projectimage?.data?.attributes?.formats?.large?.url}`}
+              alt={`Project ${onework.id}`}
+            />
           </div>
           <div>
             <h1>{onework.attributes.ProjectName}</h1>
+            <p>
+              {onework.attributes.description.length > 30 ? (
+                <div>
+                  {!text ? (
+                    <div>
+                      {onework.attributes.description.slice(0, 80)}
+                      <span onClick={handle}>....see more</span>
+
+                    </div>
+                  ) : (
+                    <div>
+                      {onework.attributes.description}
+                      <span onClick={handle}>....see Less</span>
+
+                    </div>
+                  )}
+                </div>
+              ) : (
+                onework.attributes.description
+              )}
+            </p>
           </div>
           <div className="overlay2">
-            <BsLinkedin className="icon" />
             <BsGithub className="icon" />
-          <Button small className="button"><a href={onework.attributes.UrlLink} target="_blank" >LIVE DEMO</a></Button>
+            <Button small className="button">
+              <a href={onework.attributes.UrlLink} target="_blank">
+                LIVE DEMO
+              </a>
+            </Button>
           </div>
         </motion.div>
       </AnimatePresence>
@@ -49,6 +81,11 @@ const Main = styled.div`
   padding: 30px;
   font-weight: 200;
   font-family: "Courier New", Courier, monospace;
+
+  p {
+    padding: 5px 0px;
+    font-family: verdana;
+  }
   .img {
     width: 250px;
     border: 3px solid grey;
@@ -136,5 +173,10 @@ const Main = styled.div`
     .button:hover {
       opacity: 1;
     }
+  }
+  span {
+    cursor: pointer;
+    color: grey;
+    font-size: 13px;
   }
 `;

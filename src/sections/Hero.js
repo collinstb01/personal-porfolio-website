@@ -43,7 +43,7 @@ const Hero = () => {
           />
         </motion.div>
         <div className="top-button">
-          <Button medium variant="outlined"
+          <Button medium variant="outlined" className="btn1"
           >
             <a href={file} download style={{color: "darkgray"}} >
               Download Cv
@@ -101,7 +101,8 @@ const Main = styled.div`
     text-align: center;
 
     .top-bottom {
-      button {
+      .btn1 {
+        border:  ${props => props.theme.bC === 'white' ? "" : "white"};
       }
     }
   }
@@ -151,7 +152,7 @@ const Main = styled.div`
       .left-line {
         width: 3px;
         height: 5vh;
-        background-color: black;
+        background-color: ${props => props.theme.bC === 'white' ? "black" : "white"};
       }
       .left-icon {
         margin-block: 5px;

@@ -13,17 +13,17 @@ const AboutUs = () => {
     {
       Icon: BsFillLightbulbOffFill,
       text: "Experienced",
-      textdes: "1 Year Of Experience With React Js",
+      textdes: "1+ Year Of Experience Working With React Js",
     },
     {
       Icon: AiOutlineStar,
       text: "Skilled",
-      textdes: "Expert On Various Kinds Of Tech",
+      textdes: "Skilled In My Field",
     },
     {
       Icon: GrStatusGood,
       text: "Expertised",
-      textdes: "Expert In Software Development",
+      textdes: "Expert In Web And Mobile Development",
     },
   ];
 
@@ -36,7 +36,7 @@ const AboutUs = () => {
     >
       <Main>
         <div className="title" id="about">
-          <Title title1="My About" title2="My About" />
+          <Title title1="About Me" title2="About Me" />
         </div>
         <div className="about-details">
           <div className="left">
@@ -50,14 +50,12 @@ const AboutUs = () => {
             </div>
             <div className="middle">
               <p>
-                Hi i am a web Developer and a software enginner in the field of
-                computer programming. You can checkme out on various platform to
-                see my wrks or you can just check out my project section to see
-                all my projects and see while i am the man for the job
+                Hi, i am a Web Developer and a Software Engineer in the field of
+                computer programming.
               </p>
             </div>
             <div className="bottom">
-              <Button variant="outlined">REACH ME</Button>
+              <Button variant="outlined">CONTACT ME</Button>
             </div>
           </div>
         </div>
@@ -104,6 +102,10 @@ const Main = styled.div`
       height: auto;
       border-top-left-radius: 20%;
       border-bottom-right-radius: 20%;
+      @media (max-width: 900px) {
+        width: 200px;
+        margin-block: 20px;
+      }
       @media (max-width: 700px) {
         width: 240px;
         display: none;
@@ -124,8 +126,14 @@ const Main = styled.div`
     }
     .top {
       display: flex;
+      justify-content: center;
       margin-bottom: 10px;
       color: ${(props) => props.theme.bCColor};
+
+      @media (max-width: 430px) {
+     flex-direction: column;
+     align-items: center;
+    }
     }
     .middle {
       max-width: 85%;
@@ -133,6 +141,15 @@ const Main = styled.div`
       font-family: verdana;
       letter-spacing: 1px;
       line-height: 25px;
+    }
+  }
+  button {
+    background: ${props => props.theme.bC !== "white" ? "gray" : ''};
+    border: ${props => props.theme.bC !== "white" ? "1px solid whitesmoke" : ''} ;
+    color: ${props => props.theme.bC !== "white" ? "white" : ''};
+
+    @media (max-width: 430px) {
+      margin-bottom: 20px;
     }
   }
 `;

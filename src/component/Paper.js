@@ -6,7 +6,7 @@ const Paper = ({ paper }) => {
     <Main>
       <div className="paper">
         <paper.Icon className="icon" />
-        <h2>{paper.text}</h2>
+        <h1>{paper.text}</h1>
         <h2>{paper.textdes}</h2>
       </div>
     </Main>
@@ -17,27 +17,34 @@ export default Paper;
 const Main = styled.div`
   font-family: cursive;
   font-weight: 100 !important;
+  width: 25%;
+  height: auto;
+  margin: 0px 10px;
+  background: ${(props) => props.theme.bC};
+  box-shadow: 1px 1px 1px 1px #00000038;
+  font-size: 7px;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+
+  @media (max-width: 430px) {
+    width: 80%;
+    height: 100px;
+  margin: 13px 10px;
+    }
+    h1 {
+      font-size: 18px;
+      font-weight: 100;
+    }
 
   .paper {
-    width: auto;
-    height: auto;
-    padding: 30px 10px;
-    background: ${props => props.theme.bC};
-    margin-left:  20px;
-    box-shadow: 1px 1px 1px 1px #00000038;
-    font-size: 7px;
-    text-align: center;
-    cursor: pointer;
     letter-spacing: 1px;
     font-weight: 100 !important;
-    border-radius: 10px;
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     h2 {
       font-weight: 100 !important;
     }
-  }
-  .paper:hover {
-    box-shadow: 2px 2px 2px 2px #00000038;
   }
   .icon {
     font-size: 20px;

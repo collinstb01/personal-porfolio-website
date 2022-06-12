@@ -35,7 +35,7 @@ const Contact = () => {
           ))}
         </div>
         <div className="right">
-            <h1>Send Us A Message</h1>
+          <h1>Send Us A Message</h1>
           <TextField
             className="ss"
             id="outlined-basic"
@@ -92,17 +92,20 @@ const Main = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    color: ${props => props.theme.bCColor};
+    color: ${(props) => props.theme.bCColor};
+    h1 {
+      color: ${(props) => (props.theme.bC !== "white" ? "white" : "")};
+    }
   }
   h1 {
-      margin-block: 20px;
-      font-weight: 200;
-        font-family: 'Courier New', Courier, monospace;
-    }
+    margin-block: 20px;
+    font-weight: 200;
+    font-family: "Courier New", Courier, monospace;
+  }
   .ss {
     width: 80%;
     margin-block-end: 20px;
-    background-color: ${props => props.theme.bC};
+    background-color: ${(props) => props.theme.bC};
     overflow: hidden;
   }
   .btn {
