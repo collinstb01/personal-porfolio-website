@@ -1,56 +1,76 @@
-import {creatSlice, createAsyncThunk, createSlice} from "@reduxjs/toolkit"
-import axios from "axios"
-import { AiFillPhone } from "react-icons/ai"
-import Api from "./api"
+import { creatSlice, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { AiFillPhone } from "react-icons/ai";
+import { MdFormatIndentDecrease } from "react-icons/md";
+import Api from "./api";
 
-export const FetchSkills =  createAsyncThunk(
-    "skils/skill",
-    async ({message}) => {
-        const response = await axios.get("http://localhost:1337/api/skills")
-        return response.data
+export const createproject = createAsyncThunk(
+  "skils/skill",
+  async (formData) => {
+    try {
+      const response = await axios.post("https://porfolio-tech-savvy.herokuapp.com/api/post/createproject", formData);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
     }
-)
+  }
+);
 
-export const FetchProjects = createAsyncThunk(
-    "projects/project",
+export const createskill = createAsyncThunk(
+    "skils/createskill",
+    async (skillData) => {
+      try {
+        const response = await axios.post("https://porfolio-tech-savvy.herokuapp.com/api/post/createskill", skillData);
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  );
+  
+export const getposts = createAsyncThunk(
+    "skils/getposts",
     async () => {
-       const response = await axios.get("http://localhost:1337/api/projects?populate=*")
-       return response.data
+      try {
+        const response = await axios.get("https://porfolio-tech-savvy.herokuapp.com/api/post/getposts");
+        console.log(response.data);
+        return response.data;  
+      } catch (error) {
+        console.log(error);
+      }
     }
-)
-
+  );
 const SkillSlice = createSlice({
-    name: "skill",
-    initialState: {
-        skill: [],
-        project: [],
-        message: ""
+  name: "skill",
+  initialState: {
+    posts: [],
+    message: "",
+  },
+  reducers: {},
+  extraReducers: {
+    [createproject.pending]: () => {
+      return { message: "Pending" };
     },
-    reducers: {
-
+    [createproject.fulfilled]: (state, action) => {
+      return { ...state, message: action.payload };
     },
-    extraReducers: {
-        [FetchSkills.pending]: () => {
-          return { message: "Pending"}
-        },
-        [FetchSkills.fulfilled]: (state, action) => {
-            return {...state, message: "sucessful", skill: action.payload }
-        },
-        [FetchSkills.rejected]: (state) => {
-            return {...state, message: "failed to retrieve the data"}
-        },
-        [FetchProjects.pending] : (state) => {
-            return {...state, message: "collecting data" }
-        },
-        [FetchProjects.fulfilled]: (state, action) => {
-            return {...state, message: "sucessful", project: action.payload }
-        },
-        [FetchProjects.rejected]: (state) => {
-            return {...state, message: "failed to retrieve the data"}
-        },
-    }
-})
+    [createproject.rejected]: (state) => {
+      return { ...state, message: "failed to retrieve the data" };
+    },
+    [getposts.pending]: (state) => {
+      return { ...state, message: "collecting data" };
+    },
+    [getposts.fulfilled]: (state, action) => {
+      return { ...state, message: "sucessful", posts: action.payload };
+    },
+    [getposts.rejected]: (state) => {
+      return { ...state, message: "failed to retrieve the data" };
+    },
+  },
+});
 
-export const getSkill = (state) => state.skill.skill
-export const getMessage = (state) => state.message.message
-export default SkillSlice.reducer
+export const getSkill = (state) => state.skill.skill;
+export const getMessage = (state) => state.message.message;
+export default SkillSlice.reducer;

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Home from "./pages/Home";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
-
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import { motion, useViewportScroll } from "framer-motion";
 import { darkTheme, lighTheme } from "./theme";
+import Post from "./pages/Post";
 const App = () => {
   const [theme, setTheme] = useState('light')
 
@@ -12,15 +13,28 @@ const App = () => {
   
  
   return (
-    <ThemeProvider theme={theme === 'light' ? lighTheme : darkTheme}>
+   <Router>
+     <ThemeProvider theme={theme === 'light' ? lighTheme : darkTheme}>
       <Main>
       <motion.path
         d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
         style={{ pathLength: scrollYProgress }}
       />
-      <Home theme={theme} setTheme={setTheme} />
+      <Routes>
+        <Route path="/" element={
+          <div>
+            <Home theme={theme} setTheme={setTheme} />
+          </div>
+        } />
+          <Route path="/postfortechsavvy" element={
+          <div>
+            <Post />
+          </div>
+        } />
+      </Routes>
     </Main>
     </ThemeProvider>
+   </Router>
   );
 };
 

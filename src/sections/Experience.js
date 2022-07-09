@@ -14,7 +14,7 @@ const Experience = () => {
   console.log(message);
 
   useEffect(() => {
-    dispatch(FetchSkills(message));
+    // dispatch(FetchSkills(message));
     console.log(message);
   }, [dispatch]);
 

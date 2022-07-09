@@ -28,38 +28,37 @@ const RectnWorkEach = ({ onework }) => {
           </div>
           <div>
             <img
-              src={`http://localhost:1337${onework?.attributes?.projectimage?.data?.attributes?.formats?.large?.url}`}
+              src={onework?.projectImg}
               alt={`Project ${onework.id}`}
             />
           </div>
           <div>
-            <h1>{onework.attributes.ProjectName}</h1>
+            <h1>{onework.projectName}</h1>
             <p>
-              {onework.attributes.description.length > 30 ? (
+              {onework.projectDescription.length > 30 ? (
                 <div>
                   {!text ? (
                     <div>
-                      {onework.attributes.description.slice(0, 80)}
+                      {onework.projectDescription.slice(0, 80)}
                       <span onClick={handle}>....see more</span>
 
                     </div>
                   ) : (
                     <div>
-                      {onework.attributes.description}
+                      {onework.projectDescription}
                       <span onClick={handle}>....see Less</span>
-
                     </div>
                   )}
                 </div>
               ) : (
-                onework.attributes.description
+                onework.projectDescription
               )}
             </p>
           </div>
           <div className="overlay2">
             <BsGithub className="icon" />
             <Button small className="button">
-              <a href={onework.attributes.UrlLink} target="_blank">
+              <a href={onework.projectGithub} target="_blank">
                 LIVE DEMO
               </a>
             </Button>
