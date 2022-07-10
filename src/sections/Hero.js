@@ -8,9 +8,15 @@ import img from "../i/jden.jpg";
 import { Button } from "@material-ui/core";
 import { motion } from "framer-motion";
 import file from "../i/Resume-Collins-Felix.pdf";
+import {useNavigate} from "react-router-dom"
 import { Link, animateScroll as scroll } from "react-scroll";
 import TypeWriterEffect from "react-typewriter-effect";
 const Hero = () => {
+  const navigate = useNavigate()
+
+  const route = () => {
+    navigate("/auth")
+  }
   return (
     <Main>
       <div className="top">
@@ -72,9 +78,9 @@ const Hero = () => {
         <div className="center">
           <img src={img} />
         </div>
-        <div className="right">
-          <BsMouse />
-        </div>
+       <div className="right">
+       <BsMouse onClick={route} />
+       </div>
       </div>
     </Main>
   );

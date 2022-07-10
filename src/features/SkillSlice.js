@@ -8,7 +8,10 @@ export const createproject = createAsyncThunk(
   "skils/skill",
   async (formData) => {
     try {
-      const response = await axios.post("https://porfolio-tech-savvy.herokuapp.com/api/post/createproject", formData);
+      const response = await axios.post(
+        "https://porfolio-tech-savvy.herokuapp.com/api/post/createproject",
+        formData
+      );
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -18,35 +21,54 @@ export const createproject = createAsyncThunk(
 );
 
 export const createskill = createAsyncThunk(
-    "skils/createskill",
-    async (skillData) => {
-      try {
-        const response = await axios.post("https://porfolio-tech-savvy.herokuapp.com/api/post/createskill", skillData);
-        console.log(response.data);
-        return response.data;
-      } catch (error) {
-        console.log(error);
-      }
+  "skils/createskill",
+  async (skillData) => {
+    try {
+      const response = await axios.post(
+        "https://porfolio-tech-savvy.herokuapp.com/api/post/createskill",
+        skillData
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
     }
-  );
-  
-export const getposts = createAsyncThunk(
-    "skils/getposts",
-    async () => {
-      try {
-        const response = await axios.get("https://porfolio-tech-savvy.herokuapp.com/api/post/getposts");
-        console.log(response.data);
-        return response.data;  
-      } catch (error) {
-        console.log(error);
-      }
+  }
+);
+
+export const getposts = createAsyncThunk("skils/getposts", async () => {
+  try {
+    const response = await axios.get(
+      "https://porfolio-tech-savvy.herokuapp.com/api/post/getposts"
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+export const login = createAsyncThunk(
+  "skils/login",
+  async ({ loginData, navigate }) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/user/login",
+        loginData
+      );
+      console.log(response.data);
+      navigate("/postfortechsavvy");
+      return response.data;
+    } catch (error) {
+      console.log(error);
     }
-  );
+  }
+);
 const SkillSlice = createSlice({
   name: "skill",
   initialState: {
     posts: [],
     message: "",
+    user: ""
   },
   reducers: {},
   extraReducers: {
@@ -66,6 +88,16 @@ const SkillSlice = createSlice({
       return { ...state, message: "sucessful", posts: action.payload };
     },
     [getposts.rejected]: (state) => {
+      return { ...state, message: "failed to retrieve the data" };
+    },
+    [login.pending]: (state) => {
+      return { ...state, message: "collecting data" };
+    },
+    [login.fulfilled]: (state, action) => {
+      localStorage.setItem("authuser", JSON.stringify(action.payload));
+      return { ...state, message: "sucessful", user:JSON.stringify(action.payload) };
+    },
+    [login.rejected]: (state) => {
       return { ...state, message: "failed to retrieve the data" };
     },
   },
