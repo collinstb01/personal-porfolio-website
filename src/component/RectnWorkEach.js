@@ -22,8 +22,10 @@ const RectnWorkEach = ({ onework }) => {
           transitio={{ duration: 0.5 }}
           className="img"
         >
-          <div className="overlay">
-            <BsLinkedin className="icon" />
+          <div className="overlay" target="_blank">
+           <a href="https://www.linkedin.com/in/collins-felix-181200239/">
+           <BsLinkedin className="icon" />
+           </a>
             <BsGithub className="icon" />
           </div>
           <div>
@@ -32,9 +34,8 @@ const RectnWorkEach = ({ onework }) => {
               alt={`Project ${onework.id}`}
             />
           </div>
-          <div>
+          <div style={{zIndex: 21010}}>
             <h1>{onework.projectName}</h1>
-            <p>
               {onework.projectDescription.length > 30 ? (
                 <div>
                   {!text ? (
@@ -53,7 +54,6 @@ const RectnWorkEach = ({ onework }) => {
               ) : (
                 onework.projectDescription
               )}
-            </p>
           </div>
           <div className="overlay2">
             <BsGithub className="icon" />
@@ -131,7 +131,7 @@ const Main = styled.div`
     top: 30%;
     left: 30%;
     width: 65%;
-    height: 20vh;
+    height: 10vh;
     display: flex;
     transform: scale(1.4);
     justify-content: space-evenly;
