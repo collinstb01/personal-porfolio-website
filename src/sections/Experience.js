@@ -8,16 +8,16 @@ import { FetchSkills, getSkill } from "../features/SkillSlice";
 
 const Experience = () => {
   const dispatch = useDispatch();
-  const { skill: data, message } = useSelector((state) => state.skill);
-  const _data = data?.data;
-  console.log(_data);
-  console.log(message);
+  const { posts } = useSelector((state) => state.skill);
+  console.log(posts);
 
   useEffect(() => {
     // dispatch(FetchSkills(message));
-    console.log(message);
   }, [dispatch]);
-
+  const datafrontend = posts?.skillPost?.filter((dataa) => dataa.category === "frontend")
+  const databackend = posts?.skillPost?.filter((dataa) => dataa.category === "backend")
+  console.log(datafrontend)
+  console.log(databackend)
   return (
    <div>
       <Title title1="My Experience" title2="My Experience" />
@@ -27,8 +27,8 @@ const Experience = () => {
           <h1>FrontEnd Skills</h1>
           <div className="bottom">
             <div className="bott">
-               {_data?.map((dataa) => (
-                <ExperienceCard title={dataa?.attributes?.frontendkill} />
+            {datafrontend?.map((dataa) => (
+                <ExperienceCard {...dataa} />
               ))} 
             </div>
           </div>
@@ -37,8 +37,8 @@ const Experience = () => {
           <h1>BackEnd Skills</h1>
           <div className="bottom">
             <div className="bott">
-            {_data?.map((dataa) => (
-                <ExperienceCard title={dataa?.attributes?.backendskill} />
+            {databackend?.map((dataa) => (
+                <ExperienceCard {...dataa} />
               ))} 
             </div>
           </div>
@@ -75,7 +75,7 @@ const Main = styled.div`
    
   }
   .box1 {
-    padding: 20px;
+    padding: 15px;
     background-color: ${props => props.theme.bC};
     box-shadow: inset 2px 3px 4px 0px #cfb8b894;;
   }

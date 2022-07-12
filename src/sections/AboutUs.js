@@ -7,13 +7,13 @@ import { GrStatusGood } from "react-icons/gr";
 import Paper from "../component/Paper";
 import Title from "../component/Title";
 import { motion } from "framer-motion";
-
+import { Link, animateScroll as scroll } from "react-scroll";
 const AboutUs = () => {
   const data = [
     {
       Icon: BsFillLightbulbOffFill,
       text: "Experienced",
-      textdes: "1+ Year Of Experience Working With React Js",
+      textdes: "1+ Year Of Experience Working With React Js and Node Js",
     },
     {
       Icon: AiOutlineStar,
@@ -50,12 +50,22 @@ const AboutUs = () => {
             </div>
             <div className="middle">
               <p>
-                Hi, i am a Web Developer and a Software Engineer in the field of
-                computer programming.
+                I am a Software Developer and an expert in Web Development with
+                Experience in developing mobile and web friendly applications, i
+                am obsessed with solving complex problems by building
+                applications with emphasis, accessibility and usability.
               </p>
             </div>
             <div className="bottom">
-              <Button variant="outlined">CONTACT ME</Button>
+              <Link
+                activeClass="active"
+                to="contact"
+                spy={true}
+                smooth={true}
+                duration={1000}
+              >
+                <Button variant="outlined">CONTACT ME</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -131,9 +141,9 @@ const Main = styled.div`
       color: ${(props) => props.theme.bCColor};
 
       @media (max-width: 430px) {
-     flex-direction: column;
-     align-items: center;
-    }
+        flex-direction: column;
+        align-items: center;
+      }
     }
     .middle {
       max-width: 85%;
@@ -144,9 +154,10 @@ const Main = styled.div`
     }
   }
   button {
-    background: ${props => props.theme.bC !== "white" ? "gray" : ''};
-    border: ${props => props.theme.bC !== "white" ? "1px solid whitesmoke" : ''} ;
-    color: ${props => props.theme.bC !== "white" ? "white" : ''};
+    background: ${(props) => (props.theme.bC !== "white" ? "gray" : "")};
+    border: ${(props) =>
+      props.theme.bC !== "white" ? "1px solid whitesmoke" : ""};
+    color: ${(props) => (props.theme.bC !== "white" ? "white" : "")};
 
     @media (max-width: 430px) {
       margin-bottom: 20px;

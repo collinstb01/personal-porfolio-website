@@ -24,7 +24,7 @@ const Home = ({theme, setTheme}) => {
             <Experience />
             <Offer />
             <RecentWork />
-            < Testimonial />
+            {/* < Testimonial /> */}
             < Contact />
             <Footer />
         </Container>

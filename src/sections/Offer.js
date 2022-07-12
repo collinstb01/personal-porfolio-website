@@ -9,26 +9,20 @@ const Offer = () => {
       title: "Web Development",
       id: 1,
       description: {
-        title1: "",
-        title2: "Web Development",
+        title1: "Web Development",
+        title2: "I build Modern Mobile Applications using React Native a open source Javascript Framework. I build Applications for multiple platforms",
+        list: ["IOS", "ANDROID"]
       },
     },
     {
       title: "Mobile Development",
       id: 2,
       description: {
-        title1: "Hello I am a Mobile Developer",
-        title2: "Mobile Developer",
+        title1: "Mobile Development",
+        title2: "I build Modern Mobile Applications using React Native a open source Javascript Framework. I build Applications for multiple platforms",
+        list: ["IOS", "ANDROID"]
       },
-    },
-    {
-      title: "Software Development",
-      id: 3,
-      description: {
-        title1: "Hello i am a Software Developer",
-        title2: "Software Developer",
-      },
-    },
+    }
   ];
 
   return (

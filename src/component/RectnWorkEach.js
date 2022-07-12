@@ -56,9 +56,11 @@ const RectnWorkEach = ({ onework }) => {
               )}
           </div>
           <div className="overlay2">
-            <BsGithub className="icon" />
+          <a href={onework.projectGithub} target="_blank">
+              <BsGithub className="icon" />
+          </a>
             <Button small className="button">
-              <a href={onework.projectGithub} target="_blank">
+              <a href={onework.projectUrl} target="_blank">
                 LIVE DEMO
               </a>
             </Button>

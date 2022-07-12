@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { BsMouse } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
-import { SiFacebook } from "react-icons/si";
+import { SiWhatsapp } from "react-icons/si";
 import { BsGithub } from "react-icons/bs";
 import img from "../i/jden.jpg";
 import { Button } from "@material-ui/core";
@@ -28,7 +28,7 @@ const Hero = () => {
           className="top-text"
         >
           <h1>Hi i'm</h1>
-          <h1>Jayden Collins</h1>
+          <h1>Collins Eguasa</h1>
           <TypeWriterEffect
             textStyle={{
               fontFamily: "Red Hat Display",
@@ -70,9 +70,9 @@ const Hero = () => {
       </div>
       <div className="bottom">
         <div className="left">
-          <BsLinkedin className="left-icon" />
-          <SiFacebook className="left-icon" />
-          <BsGithub className="left-icon" />
+          <a href="https://www.linkedin.com/in/collins-felix-181200239/" targe="_blank"><BsLinkedin className="left-icon" style={{color:"blue"}} /></a>
+          <a href="https://api.whatsapp.com/send?phone=+2347057415193&text=" targe="_blank"><SiWhatsapp className="left-icon" style={{color:"green"}} /></a>
+        <a href="https://github.com/collinstb01" targe="_blank"><BsGithub className="left-icon" style={{color:""}} /></a>
           <div className="left-line"></div>
         </div>
         <div className="center">

@@ -8,13 +8,13 @@ const Footer = () => {
   return (
     <Main>
         <div className="footer">
-            <span>Jayden Collins</span>
-            <div className="icons">
+            <span>Collins Eguasa</span>
+            {/* <div className="icons">
                 < AiOutlineWhatsApp  className="icon" />
                 < AiFillLinkedin className="icon" />
                 < AiOutlineMail className="icon" />
-            </div>
-            <p>Made By &#128509; Jaden</p>
+            </div> */}
+            <p>Developed By &#128509; Collins</p>
         </div>
     </Main>
   )
@@ -31,6 +31,7 @@ color: ${props => props.theme.bCColor};
 
 span {
     font-size: 20px;
+    margin-bottom: 10px;
 }
 .footer {
     width: 100%;

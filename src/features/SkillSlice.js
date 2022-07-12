@@ -1,15 +1,12 @@
 import { creatSlice, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { AiFillPhone } from "react-icons/ai";
-import { MdFormatIndentDecrease } from "react-icons/md";
-import Api from "./api";
 
 export const createproject = createAsyncThunk(
   "skils/skill",
   async (formData) => {
     try {
       const response = await axios.post(
-        "https://porfolio-tech-savvy.herokuapp.com/api/post/createproject",
+        "http://localhost:5000/api/post/createproject",
         formData
       );
       console.log(response.data);
@@ -25,7 +22,7 @@ export const createskill = createAsyncThunk(
   async (skillData) => {
     try {
       const response = await axios.post(
-        "https://porfolio-tech-savvy.herokuapp.com/api/post/createskill",
+        "http://localhost:5000/api/post/createskill",
         skillData
       );
       console.log(response.data);

@@ -13,9 +13,6 @@ const OfferCard = ({ title, id, description }) => {
     setOpen(false);
   };
 
-  console.log(_id);
-  console.log(message);
-
   const handleOpen = () => {
     setOpen(true);
     setId(id);
@@ -52,6 +49,11 @@ const OfferCard = ({ title, id, description }) => {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {message.title1}
           </Typography>
+          {
+            message?.list?.map((val, i) => (
+              <li key={i}>{val}</li>
+            ))
+          }
         </Box>
       </Modal>
     </Main>

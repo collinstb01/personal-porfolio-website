@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const LeftConact = ({ Icon, text, textdes }) => {
+const LeftConact = ({ Icon, text, textdes, anchor }) => {
   return (
     <Main>
       <div className="card">
         <Icon />
         <h1>{text}</h1>
-        <h1>{textdes}</h1>
+       <a href={anchor} target="_blank"> <h1>{textdes}</h1></a>
       </div>
     </Main>
   );
@@ -35,5 +35,9 @@ const Main = styled.div`
 
   h1 {
     margin-block: 10px;
+  }
+  a {
+    outline: none;
+    text-decoration: none;
   }
 `;

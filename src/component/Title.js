@@ -25,7 +25,7 @@ const Main = styled.div`
     text-shadow: 1px 1px 1px black;
     z-index: 22;
     @media (max-width: 500px) {
-      font-size: 20px;
+      font-size: 30px;
     }
   }
   .sec {
@@ -33,7 +33,8 @@ const Main = styled.div`
     position: absolute;
     top: 5px;
     left: 33%;
-    opacity: 0.2;
+    opacity: 0.1;
+    display: none;
     @media (max-width: 600px) {
       font-size: 25px;
       left: 15%;

@@ -23,10 +23,12 @@ const Main = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   background-color: ${props => props.theme.bC};
   box-shadow: 1px 1px 1px grey;
+  text-align: center;
   color: ${props => props.theme.bCColor};
   .img {
     width: 30px;

@@ -83,8 +83,8 @@ const Menu = styled.div`
   bottom: 3%;
   left: 40%;
   position: fixed;
-  background-color: #0030ff1f;
-  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  background: rgb(250,74,132);
+background: linear-gradient(90deg, rgba(250,74,132,0.5522584033613445) 4%, rgba(126,81,255,0.3533788515406162) 100%);
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
   color: white;
