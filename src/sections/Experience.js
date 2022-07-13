@@ -1,26 +1,22 @@
-import react, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import Title from "../component/Title";
 import ExperienceCard from "../component/ExperienceCard";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { FetchSkills, getSkill } from "../features/SkillSlice";
 
 const Experience = () => {
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.skill);
-  console.log(posts);
 
   useEffect(() => {
     // dispatch(FetchSkills(message));
   }, [dispatch]);
   const datafrontend = posts?.skillPost?.filter((dataa) => dataa.category === "frontend")
   const databackend = posts?.skillPost?.filter((dataa) => dataa.category === "backend")
-  console.log(datafrontend)
-  console.log(databackend)
+
   return (
    <div>
-      <Title title1="My Experience" title2="My Experience" />
+      <Title title1="My Skills" title2="My Skills" />
       <Main>
       <div className="div">
         <div className="box1">

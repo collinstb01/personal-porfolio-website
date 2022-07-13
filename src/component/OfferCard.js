@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import styled from "styled-components";
 
-const OfferCard = ({ title, id, description }) => {
+const OfferCard = ({ title, id, description, Icon }) => {
   const [_id, setId] = useState("");
   const [message, setMessage] = useState("");
   const [open, setOpen] = useState(false);
@@ -37,21 +37,36 @@ const OfferCard = ({ title, id, description }) => {
   };
   return (
     <Main>
+      <img src={description.image} />
       <h1>{title}</h1>
       <p onClick={handleOpen}>
         see more <AiOutlineArrowRight />
       </p>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
+         <div className="icons" style={{borderRadius: "50%", 
+          backgroundColor:"whitesmoke",
+          width:"50px", height: "50px",
+          padding: "40px",
+          boxShadow: "1px 1px 1px black",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center"
+        }}>
+         <p><Icon className="icon"  style={{ color: "gray", transform: "scale(2)"}}/></p>
+         </div>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-           {message.title2}
+           {message.title1}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {message.title1}
+            {message.title2}
           </Typography>
           {
             message?.list?.map((val, i) => (
-              <li key={i}>{val}</li>
+            <ul>
+                <li  style={{padding: "5px"}} key={i}>{val}</li>
+            </ul>
             ))
           }
         </Box>
@@ -82,5 +97,16 @@ const Main = styled.div`
     cursor: pointer;
     display: flex;
     align-items: center;
+  }
+  img{
+    max-width: 130px;
+    height: 130px;
+  }
+  li {
+    margin: 40px
+  }
+  .icon {
+    transform: scale(4);
+    background-color: blue;
   }
 `;

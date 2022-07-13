@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 import img from "../i/jden.jpg";
-import { BsFillLightbulbOffFill } from "react-icons/bs";
+import { BsLightbulb } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
 import { GrStatusGood } from "react-icons/gr";
 import Paper from "../component/Paper";
@@ -11,7 +11,7 @@ import { Link, animateScroll as scroll } from "react-scroll";
 const AboutUs = () => {
   const data = [
     {
-      Icon: BsFillLightbulbOffFill,
+      Icon: BsLightbulb,
       text: "Experienced",
       textdes: "1+ Year Of Experience Working With React Js and Node Js",
     },

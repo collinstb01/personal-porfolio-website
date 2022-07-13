@@ -8,6 +8,8 @@ import { darkTheme, lighTheme } from "./theme";
 import Post from "./pages/Post";
 import Auth from "./pages/Auth";
 import { useSelector } from "react-redux";
+import Blog from "./pages/Blog";
+import BlogPage from "./pages/BlogPage/BlogPage"
 const App = () => {
   const [theme, setTheme] = useState('light')
   const {user} = useSelector((state) => state.skill)
@@ -37,6 +39,11 @@ const App = () => {
           <Route path="/auth" element={
           <div>
             <Auth />
+          </div>
+        } />
+        <Route path="/blogs" element={
+          <div>
+            <BlogPage />
           </div>
         } />
       </Routes>

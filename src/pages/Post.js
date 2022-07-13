@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createproject, createskill } from '../features/SkillSlice'
 import FileBase from "react-file-base64"
+import { createblog } from '../features/BlogSlice'
+
 const Post = () => {
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
@@ -31,6 +33,21 @@ const Post = () => {
 
  const handleSelectSkill = (e) => {
     setSkillData({...skillData,category: e.target.value})
+    }
+
+    const [blogForm, setBlogForm] = useState({
+        image: "", title: "", message: "", category: "",
+    })
+
+    const handleSelectBlog = (e) => {
+        setBlogForm({
+            ...blogForm,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmitBlog = () => {
+        dispatch(createblog(blogForm))
     }
     console.log(skillData.category)
     return (
@@ -74,6 +91,28 @@ const Post = () => {
             <option  value="backend">BackEnd</option>
             <option value="frontend">FrontEnd</option>
         </select>
+       </div>
+
+       <div>
+       <h1>Submit Blogs</h1>
+       <FileBase
+       type="file"
+        multiple={false}
+        onDone={({base64}) => {
+            setBlogForm({...blogForm, image: base64})
+        }}
+       />
+        <input placeholder="Enter Blog Title" value={blogForm.title} name="title" onChange={(e) => 
+            setBlogForm({...blogForm, title: e.target.value})} />
+        <input placeholder="Enter Blog Message" value={blogForm.message} name="message" onChange={(e) => 
+            setBlogForm({...blogForm, message: e.target.value})} />
+        <select onChange={handleSelectBlog} value={blogForm.category} name="category">
+            <option  value="choice">---option</option>
+            <option  value="backend">Tech</option>
+            <option  value="backend">Life</option>
+            <option value="frontend">Coding</option>
+        </select>
+        <button onClick={handleSubmitBlog}>Submit</button>
        </div>
     </div>
   )

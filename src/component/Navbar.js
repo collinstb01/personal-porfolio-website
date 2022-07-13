@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { BiMoon } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Navbar = ({theme, setTheme}) => {
   const themes = () => {
@@ -9,7 +10,7 @@ const Navbar = ({theme, setTheme}) => {
   return (
     <Container id="home">
       <ul>
-        <li>Tech Boss</li>
+        <li><Link to="/" style={{textDecoration: "none", outline: "none"}}>Tech Boss</Link></li>
         <li>
           <BiMoon onClick={() => themes()} />
         </li>

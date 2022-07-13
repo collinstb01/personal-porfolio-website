@@ -1,45 +1,55 @@
 import React, { useEffect, useState } from "react";
 import Title from "../component/Title";
 import styled from "styled-components";
-import Data from "../component/RecentWorksData";
 import RectnWorkEach from "../component/RectnWorkEach";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getposts } from "../features/SkillSlice";
+import Loader from "../component/Loader"
 
 const RecentWork = () => {
-  const {posts} = useSelector((state) => state.skill)
-  console.log(posts)
-  // const menuItems = [...new Set(post?.map((Val) => Val?.data?.attributes?.category))];
+  const {posts, loading} = useSelector((state) => state.skill)
+  const menuItems = [...new Set(posts?.projectPost?.map((Val) => Val.category))];
   const [work, setWork] = useState(posts);
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getposts())
-  }, [])
-  // const FilteredData = (val) => {
-  //   const newItem = _project.filter((dataa) => {
-  //     return dataa.category == val;
-  //   });
-  //   setWork(newItem);
-  // };
+    if (posts) {
+      setWork(posts)
+    }
+  }, [dispatch])
+  useEffect(() => {
+    if (posts) {
+      setWork(posts)
+    }
+  }, [posts])
+  const FilteredData = (val) => {
+      const newData = work?.projectPost?.filter((Val) => {
+        return Val.category === val
+      })
+      setWork(newData)
+  }
   return (
     <Main id="work">
       <div>
         <Title title1="Recent Works" title2="Recent Works" />
-      </div>
       <div className="bottom">
+      </div>
+      {
+        loading && Loader
+      }
         <div className="buttons">
           <Button onClick={() => setWork(posts)}>ALL</Button>
-          {/* {menuItems.map((val) => (
+          {menuItems.map((val) => (
             <>
               <Button onClick={() => FilteredData(val)}>{val}</Button>
             </>
-          ))} */}
+          ))}
         </div>
         <div className="projects">
           <div className="project">
-            {posts?.projectPost?.map((onework, i) => (
+            {work?.projectPost?.map((onework, i) => (
               <RectnWorkEach onework={onework} key={i} />
             ))}
           </div>

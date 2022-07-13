@@ -1,20 +1,19 @@
 import styled  from "styled-components"
 import React from 'react'
-import {AiOutlineMail} from "react-icons/ai"
-import {AiFillLinkedin} from "react-icons/ai"
-import {AiOutlineWhatsApp} from "react-icons/ai"
+import { useNavigate } from "react-router-dom"
 
 const Footer = () => {
+    const date = new Date()
+    const navigate = useNavigate()
+    const route = () => {
+        navigate("/auth")
+    }
   return (
     <Main>
         <div className="footer">
-            <span>Collins Eguasa</span>
-            {/* <div className="icons">
-                < AiOutlineWhatsApp  className="icon" />
-                < AiFillLinkedin className="icon" />
-                < AiOutlineMail className="icon" />
-            </div> */}
-            <p>Developed By &#128509; Collins</p>
+        <p>Developed By &#128509; Collins</p>
+            <h1 onClick={route} style={{opacity: "0"}}>cc</h1>
+            <p>{`Copyright ${date.getFullYear()} All Rights Reserved.`}</p>
         </div>
     </Main>
   )

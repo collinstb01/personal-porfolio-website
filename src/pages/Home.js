@@ -2,18 +2,20 @@ import styled from 'styled-components'
 import React from 'react'
 import Navbar from '../component/Navbar'
 import FixedMenu from '../component/FixedMenu'
-
 import AboutUs from '../sections/AboutUs'
 import Experience from '../sections/Experience'
 import Hero from '../sections/Hero'
 import Offer from '../sections/Offer'
 import RecentWork from '../sections/RecentWork'
-import Testimonial from '../sections/Testimonial'
+// import Testimonial from '../sections/Testimonial'
 import Contact from '../sections/Contact'
 import Footer from '../component/Footer'
-
+import { useSelector, useDispatch } from 'react-redux'
+import Loader from '../component/Loader'
 
 const Home = ({theme, setTheme}) => {
+  const dispatch = useDispatch()
+
   return (
     <Main>
         <Container>

@@ -65,7 +65,8 @@ const SkillSlice = createSlice({
   initialState: {
     posts: [],
     message: "",
-    user: ""
+    user: "",
+    loading: true
   },
   reducers: {},
   extraReducers: {
@@ -73,19 +74,19 @@ const SkillSlice = createSlice({
       return { message: "Pending" };
     },
     [createproject.fulfilled]: (state, action) => {
-      return { ...state, message: action.payload };
+      return { ...state, message: action.payload, loading: false };
     },
     [createproject.rejected]: (state) => {
       return { ...state, message: "failed to retrieve the data" };
     },
     [getposts.pending]: (state) => {
-      return { ...state, message: "collecting data" };
+      return { ...state, message: "collecting data", loading: true };
     },
     [getposts.fulfilled]: (state, action) => {
-      return { ...state, message: "sucessful", posts: action.payload };
+      return { ...state, message: "sucessful", posts: action.payload, loading: false };
     },
     [getposts.rejected]: (state) => {
-      return { ...state, message: "failed to retrieve the data" };
+      return { ...state, message: "failed to retrieve the data", loading: false };
     },
     [login.pending]: (state) => {
       return { ...state, message: "collecting data" };

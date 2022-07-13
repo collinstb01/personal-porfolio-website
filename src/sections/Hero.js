@@ -8,14 +8,15 @@ import img from "../i/jden.jpg";
 import { Button } from "@material-ui/core";
 import { motion } from "framer-motion";
 import file from "../i/Resume-Collins-Felix.pdf";
-import {useNavigate} from "react-router-dom"
 import { Link, animateScroll as scroll } from "react-scroll";
+import { GrBlog } from "react-icons/gr";
 import TypeWriterEffect from "react-typewriter-effect";
+import {useNavigate} from "react-router-dom"
 const Hero = () => {
-  const navigate = useNavigate()
+  const naviagte = useNavigate()
 
   const route = () => {
-    navigate("/auth")
+    naviagte("/blogs")
   }
   return (
     <Main>
@@ -49,9 +50,8 @@ const Hero = () => {
           />
         </motion.div>
         <div className="top-button">
-          <Button medium variant="outlined" className="btn1"
-          >
-            <a href={file} download style={{color: "darkgray"}} >
+          <Button medium variant="outlined" className="btn1">
+            <a href={file} download style={{ color: "darkgray" }}>
               Download Cv
             </a>
           </Button>
@@ -70,17 +70,30 @@ const Hero = () => {
       </div>
       <div className="bottom">
         <div className="left">
-          <a href="https://www.linkedin.com/in/collins-felix-181200239/" targe="_blank"><BsLinkedin className="left-icon" style={{color:"blue"}} /></a>
-          <a href="https://api.whatsapp.com/send?phone=+2347057415193&text=" targe="_blank"><SiWhatsapp className="left-icon" style={{color:"green"}} /></a>
-        <a href="https://github.com/collinstb01" targe="_blank"><BsGithub className="left-icon" style={{color:""}} /></a>
+          <a
+            href="https://www.linkedin.com/in/collins-felix-181200239/"
+            target="_blank"
+          >
+            <BsLinkedin className="left-icon" style={{ color: "darkblue" }} />
+          </a>
+          <a
+            href="https://api.whatsapp.com/send?phone=+2347057415193&text="
+            target="_blank"
+          >
+            <SiWhatsapp className="left-icon" style={{ color: "green" }} />
+          </a>
+          <a href="https://github.com/collinstb01" target="_blank">
+            <BsGithub className="left-icon" style={{ color: "" }} />
+          </a>
           <div className="left-line"></div>
         </div>
         <div className="center">
           <img src={img} />
         </div>
-       <div className="right">
-       <BsMouse onClick={route} />
-       </div>
+        <div className="right" onClick={route}>
+          <GrBlog className="right-icon" />
+          <p>My Blog</p>
+        </div>
       </div>
     </Main>
   );
@@ -101,12 +114,13 @@ const Main = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: ${props => props.theme.bC === 'white' ? "#3F3D56" : 'whitesmoke'};
+    color: ${(props) =>
+      props.theme.bC === "white" ? "#3F3D56" : "whitesmoke"};
     text-align: center;
 
     .top-bottom {
       .btn1 {
-        border:  ${props => props.theme.bC === 'white' ? "" : "white"};
+        border: ${(props) => (props.theme.bC === "white" ? "" : "white")};
       }
     }
   }
@@ -128,8 +142,8 @@ const Main = styled.div`
     font-family: Arial;
   }
   .bottom {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: flex-end;
 
     .center {
@@ -156,11 +170,30 @@ const Main = styled.div`
       .left-line {
         width: 3px;
         height: 5vh;
-        background-color: ${props => props.theme.bC === 'white' ? "black" : "white"};
+        background-color: ${(props) =>
+          props.theme.bC === "white" ? "black" : "white"};
       }
       .left-icon {
         margin-block: 5px;
       }
+    }
+  }
+  .right {
+    color: darkblue;
+    text-align: center;
+    cursor: pointer;
+
+    p {
+      font-weight: 500;
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 2px;
+      font-size: 20px;
+      @media (max-width: 300px) {
+        font-size: 13px;
+      }
+    }
+    .right-icon {
+      color: white;
     }
   }
 `;
