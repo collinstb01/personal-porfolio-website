@@ -152,7 +152,7 @@ const Main = styled.div`
       overflow: hidden;
       justify-self: center;
 
-      @media (max-width: 400px) {
+      @media (max-width: 500px) {
         width: 200px;
       }
       img {
@@ -180,21 +180,24 @@ const Main = styled.div`
     }
   }
   .right {
-    color: darkblue;
     text-align: center;
     cursor: pointer;
+    color: ${props => props.theme.blogColor};
+
 
     p {
       font-weight: 500;
       font-family: 'Courier New', Courier, monospace;
       letter-spacing: 2px;
       font-size: 20px;
-      @media (max-width: 300px) {
-        font-size: 13px;
+      @media (max-width: 500px) {
+       letter-spacing: 0px;
+       text-align: right;
       }
     }
     .right-icon {
       color: white;
+      
     }
   }
 `;

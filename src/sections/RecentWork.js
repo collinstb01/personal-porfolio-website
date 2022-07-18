@@ -9,23 +9,24 @@ import Loader from "../component/Loader"
 
 const RecentWork = () => {
   const {posts, loading} = useSelector((state) => state.skill)
+  const _posts = posts?.projectPost
   const menuItems = [...new Set(posts?.projectPost?.map((Val) => Val.category))];
-  const [work, setWork] = useState(posts);
+  const [work, setWork] = useState([]);
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getposts())
     if (posts) {
-      setWork(posts)
+      setWork(_posts)
     }
   }, [dispatch])
   useEffect(() => {
     if (posts) {
-      setWork(posts)
+      setWork(_posts)
     }
   }, [posts])
   const FilteredData = (val) => {
-      const newData = work?.projectPost?.filter((Val) => {
+      const newData = work?.filter((Val) => {
         return Val.category === val
       })
       setWork(newData)
@@ -33,15 +34,15 @@ const RecentWork = () => {
   return (
     <Main id="work">
       <div>
-        <Title title1="Recent Works" title2="Recent Works" />
+        <Title title1="Projects" title2="Projects" />
       <div className="bottom">
       </div>
       {
-        loading && Loader
+        loading && <h1>Loading...</h1>
       }
         <div className="buttons">
-          <Button onClick={() => setWork(posts)}>ALL</Button>
-          {menuItems.map((val) => (
+          <Button onClick={() => setWork(_posts)}>ALL</Button>
+          {menuItems?.map((val) => (
             <>
               <Button onClick={() => FilteredData(val)}>{val}</Button>
             </>
@@ -49,7 +50,7 @@ const RecentWork = () => {
         </div>
         <div className="projects">
           <div className="project">
-            {work?.projectPost?.map((onework, i) => (
+            {work?.map((onework, i) => (
               <RectnWorkEach onework={onework} key={i} />
             ))}
           </div>

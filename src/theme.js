@@ -5,7 +5,7 @@ export const lighTheme = {
     footerBackground: 'azure',
     navbarBackground: '#f5f5fa',
     navbarColor: 'black',
-
+    blogColor: "darkblue"
 }
 export const darkTheme = {
     backgroundColor: '#1A1A40',
@@ -15,4 +15,5 @@ export const darkTheme = {
     footerBackground: '#f9f9f9',
     navbarBackground: '#4C3575',
     navbarColor: 'white',
+    blogColor: "white"
 }
