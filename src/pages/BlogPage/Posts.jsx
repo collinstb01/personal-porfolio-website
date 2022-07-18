@@ -3,13 +3,13 @@ import Post from "./Post";
 import styled from "styled-components"
 
 export default function Posts() {
-  const {blogs} = useSelector((state) => state.blog)
+  const {blogs, loading} = useSelector((state) => state.blog)
 
   return (
     <Main className="posts">
       {
         blogs?.blogPosts?.map((data, i) => (
-          <Post {...data} key={i}/>
+          <Post {...data} loading={loading} key={i}/>
         ))
       }
     </Main>

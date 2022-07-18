@@ -1,15 +1,15 @@
 import styled from "styled-components";
-
+import img from "../../i/code.jpg"
 export default function Header() {
   return (
-    <Main className="header">
+    <Main className="header" style={{backgroundImage: "url('../../i/code.jpg')"}}>
       <div className="headerTitles">
-        <span className="headerTitleSm">React & Node</span>
+        <span className="headerTitleSm">Welcome To My</span>
         <span className="headerTitleLg">BLOG</span>
       </div>
       <img
         className="headerImg"
-        src="https://images.pexels.com/photos/1167355/pexels-photo-1167355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        src={img}
         alt=""
       />
     </Main>
@@ -17,7 +17,7 @@ export default function Header() {
 }
 
 const Main = styled.div`
-  margin-top: 60px;
+  margin-block: 20px;
 
 .headerTitles {
   display: flex;
@@ -28,22 +28,22 @@ const Main = styled.div`
 }
 
 .headerTitleSm {
-  position: absolute;
-  top: 18%;
+  /* position: absolute; */
+  /* top: 18%; */
   font-size: 20px;
 }
 
 .headerTitleLg {
-  position: absolute;
-  top: 20%;
+  /* position: absolute; */
+  /* top: 20%; */
   font-size: 100px;
 }
 
 .headerImg {
   width: 100%;
-  height: 450px;
-  margin-top: 80px;
-  object-fit: cover;
+  height: auto;
+  margin-top: 20px;
+  /* object-fit: cover; */
 }
 
 `

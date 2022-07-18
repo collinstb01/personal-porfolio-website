@@ -10,6 +10,7 @@ import Auth from "./pages/Auth";
 import { useSelector } from "react-redux";
 import Blog from "./pages/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage"
+import BlogDetails from "./pages/BlogPage/BlogDetailsPage/BlogDetails";
 const App = () => {
   const [theme, setTheme] = useState('light')
   const {user} = useSelector((state) => state.skill)
@@ -46,6 +47,12 @@ const App = () => {
             <BlogPage />
           </div>
         } />
+        <Route path="/blog/:id" element={
+          <div>
+            <BlogDetails />
+          </div>
+        } />
+
       </Routes>
     </Main>
     </ThemeProvider>

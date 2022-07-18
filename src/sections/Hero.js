@@ -143,13 +143,14 @@ const Main = styled.div`
   }
   .bottom {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 33.3% 33.3% 33.3%;
     align-items: flex-end;
 
     .center {
       width: 300px;
       height: auto;
       overflow: hidden;
+      justify-self: center;
 
       @media (max-width: 400px) {
         width: 200px;

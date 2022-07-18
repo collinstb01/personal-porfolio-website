@@ -6,7 +6,7 @@ export const createblog = createAsyncThunk(
   async (blogForm) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/blogs/createblog",
+        "https://porfolio-tech-savvy.herokuapp.com/api/blogs/createblog",
         blogForm
       );
       console.log(response.data);
@@ -20,7 +20,7 @@ export const createblog = createAsyncThunk(
 export const getblogs = createAsyncThunk("blogs/getblogs", async () => {
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/blogs/getblogs"
+      "https://porfolio-tech-savvy.herokuapp.com/api/blogs/getblogs"
     );
     console.log(response.data);
     return response.data;
@@ -29,12 +29,23 @@ export const getblogs = createAsyncThunk("blogs/getblogs", async () => {
   }
 });
 
+export const getblog = createAsyncThunk("blogs/getblog", async (id) => {
+  try {
+    const response = await axios.get(`https://porfolio-tech-savvy.herokuapp.com/api/blogs/getblog/${id}`, id)
+    
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 const BlogSlice = createSlice({
   name: "skill",
   initialState: {
     blogs: [],
     blog: [],
-    message: ""
+    message: "",
+    loading: true
   },
   reducers: {},
   extraReducers: {
@@ -54,6 +65,15 @@ const BlogSlice = createSlice({
       return { ...state, message: "sucessful", blogs: action.payload, loading: false };
     },
     [getblogs.rejected]: (state) => {
+      return { ...state, message: "failed to retrieve the data", loading: false };
+    },
+    [getblog.pending]: (state) => {
+      return { ...state, message: "collecting data", loading: true };
+    },
+    [getblog.fulfilled]: (state, action) => {
+      return { ...state, message: "sucessful", blog: action.payload, loading: false };
+    },
+    [getblog.rejected]: (state) => {
       return { ...state, message: "failed to retrieve the data", loading: false };
     }
   },

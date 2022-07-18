@@ -39,12 +39,6 @@ const Post = () => {
         image: "", title: "", message: "", category: "",
     })
 
-    const handleSelectBlog = (e) => {
-        setBlogForm({
-            ...blogForm,
-            [e.target.name]: e.target.value
-        })
-    }
 
     const handleSubmitBlog = () => {
         dispatch(createblog(blogForm))
@@ -106,11 +100,11 @@ const Post = () => {
             setBlogForm({...blogForm, title: e.target.value})} />
         <input placeholder="Enter Blog Message" value={blogForm.message} name="message" onChange={(e) => 
             setBlogForm({...blogForm, message: e.target.value})} />
-        <select onChange={handleSelectBlog} value={blogForm.category} name="category">
+        <select onChange={(e) => setBlogForm({...blogForm, category: e.target.value})} value={blogForm.category} name="category">
             <option  value="choice">---option</option>
-            <option  value="backend">Tech</option>
-            <option  value="backend">Life</option>
-            <option value="frontend">Coding</option>
+            <option  value="tech">Tech</option>
+            <option  value="life">Life</option>
+            <option value="coding">Coding</option>
         </select>
         <button onClick={handleSubmitBlog}>Submit</button>
        </div>

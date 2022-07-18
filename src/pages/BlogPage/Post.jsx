@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components"
+import DoorDashFavorite from "../../component/Loader";
 
-export default function Post({_id, image, title, message, category}) {
+export default function Post({_id, image, title, message, createdAt, loading}) {
+  const navigate = useNavigate()
+  const route = () => {
+    navigate(`/blog/${_id}`)
+  }
+  if (loading) {
+    return <DoorDashFavorite />
+  }
   return (
     <Main className="post">
       <img
@@ -11,24 +19,22 @@ export default function Post({_id, image, title, message, category}) {
       />
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">
-            <Link className="link" to="/posts?cat=Music">
+          {/* <span className="postCat">
+            <Link to="" className="link" >
               Music
             </Link>
           </span>
           <span className="postCat">
-            <Link className="link" to="/posts?cat=Music">
+            <Link to="" className="link" >
               Life
             </Link>
-          </span>
+          </span> */}
         </div>
-        <span className="postTitle">
-          <Link to={`/blog/${_id}`} className="link">
+        <span className="postTitle" onClick={route}>
            {title}
-          </Link>
         </span>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">{createdAt.slice(0, 10)}</span>
       </div>
       <p className="postDesc">
        {message}
@@ -42,7 +48,7 @@ const Main = styled.div`
   margin: 0px 25px 40px 25px;
   display: flex;
   flex-direction: column;
-
+  font-family: 'Courier New', Courier, monospace;
   @media (max-width: 900px) {
     margin: 10px 0px; 
   }
@@ -75,7 +81,7 @@ const Main = styled.div`
 }
 
 .postTitle {
-  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 900;
   margin-top: 15px;
@@ -88,7 +94,7 @@ const Main = styled.div`
   font-size: 13px;
   font-weight: 400;
   color: #999999;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .postDesc {
