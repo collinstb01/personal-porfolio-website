@@ -26,7 +26,7 @@ const RecentWork = () => {
     }
   }, [posts])
   const FilteredData = (val) => {
-      const newData = work?.filter((Val) => {
+      const newData = posts?.projectPost?.filter((Val) => {
         return Val.category === val
       })
       setWork(newData)
