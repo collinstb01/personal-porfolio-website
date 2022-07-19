@@ -5,7 +5,6 @@ import RectnWorkEach from "../component/RectnWorkEach";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getposts } from "../features/SkillSlice";
-import Loader from "../component/Loader"
 
 const RecentWork = () => {
   const {posts, loading} = useSelector((state) => state.skill)

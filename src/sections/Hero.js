@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { BsMouse } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 import { SiWhatsapp } from "react-icons/si";
 import { BsGithub } from "react-icons/bs";
@@ -155,6 +154,9 @@ const Main = styled.div`
       @media (max-width: 500px) {
         width: 200px;
       }
+      @media (max-width: 300px) {
+        width: 130px;
+      }
       img {
         width: 100%;
         height: auto;
@@ -190,13 +192,17 @@ const Main = styled.div`
       font-family: 'Courier New', Courier, monospace;
       letter-spacing: 2px;
       font-size: 20px;
-      @media (max-width: 500px) {
+      @media (max-width: 450px) {
        letter-spacing: 0px;
        text-align: right;
+      font-size: 17px;
       }
     }
     .right-icon {
       color: white;
+      @media (max-width: 500px) {
+        margin-left: 75%;
+      }
       
     }
   }

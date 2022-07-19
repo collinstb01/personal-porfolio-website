@@ -2,29 +2,30 @@ import styled from "styled-components";
 import img from "../../i/code.jpg"
 export default function Header() {
   return (
-    <Main className="header" style={{backgroundImage: "url('../../i/code.jpg')"}}>
+    <Main className="header" style={{backgroundImage: `url(${img})`}}>
       <div className="headerTitles">
         <span className="headerTitleSm">Welcome To My</span>
         <span className="headerTitleLg">BLOG</span>
       </div>
-      <img
-        className="headerImg"
-        src={img}
-        alt=""
-      />
     </Main>
   );
 }
 
 const Main = styled.div`
-  margin-block: 20px;
-
+    margin-bottom: 20px;
+    background-size: cover;
+    height: 250px;
+    width: 100%;
+    display: flex;
 .headerTitles {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Lora", serif;
-  color: #444;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lora",serif;
+    color: whitesmoke;
+    text-shadow: 1px 1px 1px black;
 }
 
 .headerTitleSm {

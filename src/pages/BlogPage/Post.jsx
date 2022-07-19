@@ -50,9 +50,11 @@ const Main = styled.div`
   flex-direction: column;
   font-family: 'Courier New', Courier, monospace;
   @media (max-width: 900px) {
-    margin: 10px 0px; 
+    margin: 10px 10px; 
   }
-  
+  @media (max-width: 500px) {
+    width: 100%;
+  }
   .link {
     text-decoration: none;
   }
@@ -61,6 +63,11 @@ const Main = styled.div`
   height: 280px;
   object-fit: cover;
   border-radius: 7px;
+
+  @media (max-width: 500px) {
+    width: 100%;
+    align-self: center;
+  }
 }
 
 .postInfo {
