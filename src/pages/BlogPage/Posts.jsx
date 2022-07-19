@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import Post from "./Post";
 import styled from "styled-components"
-
+import Footer from "../../component/Footer.js"
+ 
 export default function Posts() {
   const {blogs, loading} = useSelector((state) => state.blog)
 
@@ -11,6 +12,12 @@ export default function Posts() {
         blogs?.blogPosts?.map((data, i) => (
           <Post {...data} loading={loading} key={i}/>
         ))
+      }
+      {
+        blogs?.blogPosts?.length > 0 && <p style={{textAlign: "center"}}>No More Blog Post To View</p>
+      }
+       {
+        blogs?.blogPosts?.length > 0 && <Footer />
       }
     </Main>
   );

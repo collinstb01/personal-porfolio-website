@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Footer from '../../../component/Footer'
 import Navbar from '../../../component/Navbar'
 import { getblog } from '../../../features/BlogSlice'
 
@@ -47,6 +48,7 @@ const BlogDetails = () => {
           <p className="singlePostDesc">
             {blog?.blogPost?.message}
           </p>
+        <Footer />
         </div>
 }
 
