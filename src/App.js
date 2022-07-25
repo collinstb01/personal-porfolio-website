@@ -12,7 +12,7 @@ import Blog from "./pages/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage"
 import BlogDetails from "./pages/BlogPage/BlogDetailsPage/BlogDetails";
 const App = () => {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('dark')
   const {user} = useSelector((state) => state.skill)
   console.log(user)
   const { scrollYProgress } = useViewportScroll();

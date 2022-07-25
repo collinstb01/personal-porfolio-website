@@ -10,7 +10,7 @@ const Navbar = ({theme, setTheme}) => {
   return (
     <Container id="home">
       <ul>
-        <li><Link to="/" style={{textDecoration: "none", outline: "none"}}>Tech Boss</Link></li>
+      <Link to="/" style={{textDecoration: "none", outline: "none"}}><li style={{textDecoration: "none", outline: "none", color: `${props => props.theme.navbarColor}`}}>Tech Boss</li></Link>
         <li>
           <BiMoon onClick={() => themes()} />
         </li>
@@ -25,7 +25,6 @@ const Container = styled.div`
   width: 100%;
   padding: 18px;
   background-color: ${props => props.theme.navbarBackground};
-  color: ${props => props.theme.navbarColor};
   font-family: monospace;
   letter-spacing: 3px;
   box-shadow: 1px 1px 0px ${props => props.theme.bC === "white" ? "#d1c3c3" : "#150050"};
@@ -40,6 +39,7 @@ const Container = styled.div`
       list-style: none;
       font-size: 20px;
       cursor: pointer;
+  color: ${props => props.theme.navbarColor};
     }
     li:nth-child(2) {
     }
